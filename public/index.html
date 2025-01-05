@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QuickScrape Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>QuickScrape Dashboard</h1>
+    <p>Enter a website URL and a CSS selector to scrape. Or discover potential selectors.</p>
+    
+    <!-- The same form as before -->
+    <form id="scrape-form">
+      <div class="form-group">
+        <label for="url">Target URL:</label>
+        <input type="text" id="url" name="url" placeholder="https://example.com" required />
+      </div>
+      <div class="form-group">
+        <label for="selector">CSS Selector:</label>
+        <input
+          type="text"
+          id="selector"
+          name="selector"
+          placeholder=".article-title or #price"
+          required
+        />
+      </div>
+
+      <!-- NEW BUTTON: Discover CSS Selectors -->
+      <button type="button" id="discover-btn" class="btn secondary-btn">
+        Discover Selectors
+      </button>
+
+      <button type="submit" class="btn">
+        Scrape & Visualize
+      </button>
+    </form>
+
+    <!-- New container to hold discovered selectors -->
+    <div id="discovered-section" style="display: none; margin-top: 1rem;">
+      <h2>Discovered Selectors</h2>
+      <select id="discovered-selectors-dropdown">
+        <option value="">-- Choose a selector --</option>
+      </select>
+      <p style="font-size: 0.9rem; color: #ccc;">
+        (Up to 200 displayed. Some might still not be perfect.)
+      </p>
+    </div>
+
+    <!-- Result Section as before -->
+    <div id="result-section" style="display:none;">
+      <h2>Scraped Data</h2>
+      <ul id="raw-data"></ul>
+      
+      <h2>Visualization</h2>
+      <canvas id="scrapeChart" width="400" height="200"></canvas>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
